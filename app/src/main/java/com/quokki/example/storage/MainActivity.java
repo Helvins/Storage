@@ -1,5 +1,6 @@
 package com.quokki.example.storage;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,5 +29,15 @@ public class MainActivity extends AppCompatActivity {
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TITLE, "newfile.txt");
         startActivityForResult(intent, CREATE_REQUEST_CODE);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData){
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == CREATE_REQUEST_CODE){
+                if(resultData != null){
+                    textView.setText("");
+                }
+            }
+        }
     }
 }
